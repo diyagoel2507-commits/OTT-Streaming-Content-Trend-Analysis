@@ -56,6 +56,17 @@ GitHub version history can be used to review and recover earlier project version
 
 Before claiming rollback validation, test the procedure on a non-critical file or branch and record the test date, commit identifier, change made, restoration result, and verification outcome.
 
+## Rollback Test Record
+
+- **Test branch:** `rollback-test`
+- **Test file:** `rollback_test.txt`
+- **Test action:** Created and committed a temporary test file, then removed it in a separate commit.
+- **Verification:** Confirmed that the temporary file no longer appears on the test branch.
+- **Main branch:** Left unchanged during the test.
+- **Result:** Temporary file removal was verified on the test branch.
+
+**Note:** This test verifies a basic file-removal workflow, not a production application deployment rollback.
+
 ## 7. Limitations
 
 - No live web application has been deployed.
