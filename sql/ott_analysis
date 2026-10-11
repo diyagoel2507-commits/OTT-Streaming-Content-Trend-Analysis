@@ -45,6 +45,7 @@ GROUP BY rating
 ORDER BY total_titles DESC;
 
 -- Query 6: Movies vs TV Shows percentage
+
 SELECTs
     type,
     COUNT(*) AS total_titles,
