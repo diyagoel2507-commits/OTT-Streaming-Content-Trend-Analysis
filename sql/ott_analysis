@@ -1,0 +1,57 @@
+
+-- OTT Streaming Content Trend Analysis
+-- Dataset: Netflix Movies and TV Shows
+
+-- Query 1: Total number of titles
+SELECT COUNT(*) AS total_titles
+FROM netflix_titles;
+
+-- Query 2: Movies vs TV Shows
+SELECT
+    type,
+    COUNT(*) AS total_titles
+FROM netflix_titles
+GROUP BY type
+ORDER BY total_titles DESC;
+
+-- Query 3: Content released each year
+SELECT
+    release_year,
+    COUNT(*) AS total_titles
+FROM netflix_titles
+WHERE release_year IS NOT NULL
+GROUP BY release_year
+ORDER BY release_year;
+
+-- Query 4: Top 10 countries by title count
+-- Note: This query counts exact country-field values.
+SELECT
+    country,
+    COUNT(*) AS total_titles
+FROM netflix_titles
+WHERE country IS NOT NULL
+  AND TRIM(country) != ''
+GROUP BY country
+ORDER BY total_titles DESC
+LIMIT 10;
+
+-- Query 5: Content rating distribution
+SELECT
+    rating,
+    COUNT(*) AS total_titles
+FROM netflix_titles
+WHERE rating IS NOT NULL
+GROUP BY rating
+ORDER BY total_titles DESC;
+
+-- Query 6: Movies vs TV Shows percentage
+SELECTs
+    type,
+    COUNT(*) AS total_titles,
+    ROUND(
+        COUNT(*) * 100.0 / (SELECT COUNT(*) FROM netflix_titles),
+        2
+    ) AS percentage
+FROM netflix_titles
+GROUP BY type
+ORDER BY total_titles DESC;
