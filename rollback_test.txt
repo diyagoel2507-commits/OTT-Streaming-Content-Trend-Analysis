@@ -1,2 +1,0 @@
-Temporary test file for GitHub rollback verification.
-This file is created only to test version recovery.
